@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var program = require('commander');
+
+var aerolane = require('../');
+
+var message;
+
+program
+  .version('0.0.1')
+  .arguments('<message>')
+  .action(function(msg) {
+    message = msg;
+  })
+  .parse(process.argv);
+
+if (typeof message === 'undefined') {
+  console.error('Input message.');
+  process.exit(1);
+}
+
+aerolane.publish(message);

@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var program = require('commander');
+
+var aerolane = require('../');
+
+program
+  .version('0.0.1')
+  .option('-p, --port', 'port number of server (default: 3000)')
+  .parse(process.argv);
+
+var port = null;
+if (program.port) {
+  port = parseInt(program.port);
+}
+
+aerolane.serve(port);
